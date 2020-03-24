@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="426be8b0-c447-4df9-b0ff-7771c0e921fb" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>images</find>
+      <find>bottom</find>
+      <find>css</find>
+      <find>bnr</find>
+      <find>responsiveSlides</find>
+      <find>1.11.0</find>
+      <find>foo</find>
+      <find>logo</find>
+      <find>home</find>
+      <find>title</find>
+    </findStrings>
+  </component>
+  <component name="ProjectId" id="1ZYf0QA3UikbymjL4COx7ZrtVlU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/wp-content/themes/revando" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\wordpress\wp-content\themes\revando" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="426be8b0-c447-4df9-b0ff-7771c0e921fb" name="Default" comment="" />
+      <created>1573559999562</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573559999562</updated>
+      <workItem from="1573560001001" duration="8227000" />
+      <workItem from="1574042013460" duration="611000" />
+      <workItem from="1574043900753" duration="1450000" />
+      <workItem from="1574914788110" duration="15137000" />
+      <workItem from="1574991565952" duration="3356000" />
+      <workItem from="1575077700922" duration="88000" />
+      <workItem from="1585020727681" duration="7748000" />
+      <workItem from="1585043878061" duration="4943000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1585021514163">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.738/-1920.-226.1920.1050@0.0.1366.738" timestamp="1585021514163" />
+    <state x="518" y="292" key="NewPhpFileDialog" timestamp="1585021402436">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="518" y="292" key="NewPhpFileDialog/0.0.1366.738/-1920.-226.1920.1050@0.0.1366.738" timestamp="1585021402436" />
+    <state x="284" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585041533550">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="284" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.738/-1920.-226.1920.1050@0.0.1366.738" timestamp="1585041533550" />
+  </component>
+</project>
