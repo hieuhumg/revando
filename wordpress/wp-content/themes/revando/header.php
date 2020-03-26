@@ -91,33 +91,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <?php foreach ($menu as $value): ?>
                             <?php if (($value->menu_item_parent) == 0) { ?>
                                 <li class="grid"><a href="<?= $value->url ?>"><?= $value->title; ?></a>
-                                    <?php $dem = 0; ?>
-                                    <?php foreach ($menu as $item) {
+                                    <?php
+                                    $child = '<div class="mepanel">
+                                                <div class="row">';
+                                    $dem = 0;
+                                    foreach ($menu as $item) {
                                         if ($item->menu_item_parent == $value->ID) {
+                                            $dem_2 = 0;
+                                            $child_2 = '';
+                                            foreach ($menu as $va) {
+                                                if ($va->menu_item_parent == $item->ID) {
+                                                    $child_2 .= '<li><a href="' . $va->url . '">' . $va->title . '</a></li>';
+                                                    $dem_2++;
+                                                }
+                                            }
+                                            if ($dem_2 == 0) {
+                                                $child_2 = '';
+                                            }
                                             $dem++;
-                                        }
-                                        if ($dem != 0) {
-                                            ?>
-                                            <div class="mepanel">
-                                                <div class="row">
-
-                                                    <div class="col1 me-one">
-                                                        <h4><?= $item->title; ?></h4>
+                                            $child .= '<div class="col1 me-one">
+                                                        <a href="'. $item->url.'"><h4>'. $item->title .'</h4></a>
+                                                        
                                                         <ul>
-                                                            <li><a href="products.html">499 Store</a></li>
-                                                            <li><a href="products.html">Fastrack</a></li>
-                                                            <li><a href="products.html">Casio</a></li>
-                                                            <li><a href="products.html">Fossil</a></li>
-                                                            <li><a href="products.html">Maxima</a></li>
-                                                            <li><a href="products.html">Timex</a></li>
-                                                            <li><a href="products.html">TomTom</a></li>
-                                                            <li><a href="products.html">Titan</a></li>
+                                                           '.$child_2.'
                                                         </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-                                    <?php } ?>
+                                                    </div>';
+
+                                        }
+
+                                    }
+                                    $child .= '</div></div>';
+                                    if ($dem != 0) {
+                                        echo $child;
+                                    }
+                                    ?>
+
                                 </li>
                             <?php } ?>
                         <?php endforeach; ?>
@@ -126,11 +134,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-3 header-right">
-                <div class="search-bar">
-                    <input type="text" value="Search" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Search';}">
-                    <input type="submit" value="">
-                </div>
+                <form action="<?php echo esc_url(home_url('/')); ?>">
+                    <div class="search-bar">
+                        <input type="text" placeholder="tim kiem" name="s">
+                        <input type="submit" value="">
+                    </div>
+                </form>
+
             </div>
             <div class="clearfix"></div>
         </div>
