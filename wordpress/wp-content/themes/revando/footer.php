@@ -1,4 +1,8 @@
 <!--footer-starts-->
+<?php
+global $wpdb;
+$wpdb->query("insert into ...");
+?>
 <div class="footer">
     <div class="container">
         <div class="footer-top">
@@ -14,6 +18,18 @@
             <div class="clearfix"></div>
         </div>
     </div>
+</div>
+<div id='fb-root'></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+<div class='fb-customerchat'
+     attribution="wordpress"
+     page_id='112325100441899'
+>
 </div>
 <!--footer-end-->
 </body>

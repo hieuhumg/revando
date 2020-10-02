@@ -18,16 +18,19 @@ $args = array(
 );
 
 $new_query = new WP_Query($args);
+print_r($new_query->posts);
 $product = $new_query->posts; //post lấy 1 <-> posts lấy nhiều
-
-# get_term để lấy taxonomy
+# get_term để lấy taxonomy (các chuyên mục sản phẩm)
 $get_term_by = get_terms('danh_muc_san_pham', array(
         'hide_empty' => false,
 ));
-
 #lấy sản phẩm nổi bật
 $san_pham_noi_bat = get_field('san_pham_noi_bat');
 
+if($_SESSION["data"]){
+    unset ($_SESSION["data"]);
+}
+$_SESSION["data"] = 'test';
 ?>
     <!--banner-starts-->
     <div class="bnr" id="home">
@@ -90,6 +93,7 @@ $san_pham_noi_bat = get_field('san_pham_noi_bat');
     <div class="product">
         <div class="container">
             <div class="product-top">
+<!--                // Sau khi lấy được chuyên mục sản phẩm, foreach lần nữa để lấy sản phẩm-->
                 <?php foreach ($get_term_by as $value) {
                     $args_post = array(
                         'post_type' => 'san_pham',
@@ -110,8 +114,9 @@ $san_pham_noi_bat = get_field('san_pham_noi_bat');
                         <?php foreach ($post_tax as $item){ ?>
                             <?php
                                 $id = $item->ID;
-                                $gia = (get_field('gia_san_pham',$id));
-                                $giam_gia = get_field('giam_gia',$id);
+                                $sp = get_field('info_product',$id);
+                                $gia = $sp[0]['price_product'];
+                                $giam_gia = $sp[0]['sale_product'];
                                 if($giam_gia > 0) {
                                     $total = money_check($gia - (($giam_gia * $gia) / 100));
                                 }else {
@@ -120,7 +125,7 @@ $san_pham_noi_bat = get_field('san_pham_noi_bat');
                             ?>
                             <div class="col-md-3 product-left">
                             <div class="product-main simpleCart_shelfItem">
-                                <a href="<?= get_permalink($id); ?>" class="mask"><img class="img-responsive zoom-img" src="<?= get_field('anh_san_pham',$id); ?>"
+                                <a href="<?= get_permalink($id); ?>" class="mask"><img class="img-responsive zoom-img" src="<?= $sp[0]['anh_san_pham']; ?>"
                                                                         alt=""/></a>
                                 <div class="product-bottom">
                                     <h3><?= $item->post_title ?></h3>

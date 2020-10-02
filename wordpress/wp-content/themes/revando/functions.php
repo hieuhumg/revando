@@ -163,4 +163,30 @@ function money_check($srt)
 {
     return number_format($srt, 0, ',', '.');
 }
+session_start();
+
+function add_to_card() {
+    session_start();
+}
+
+function hk_CreatDatabaseContacts(){
+    global $wpdb;
+    $charsetCollate = $wpdb->get_charset_collate();
+    $contactTable = $wpdb->prefix . 'cart';
+    $createContactTable = "CREATE TABLE IF NOT EXISTS `{$contactTable}` (
+            `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+            `name` varchar(255) NOT NULL,
+            `email` varchar(255) NOT NULL,
+            `phone` varchar(20) NOT NULL,
+            `address` varchar(255) NOT NULL,
+            `content` longtext NULL,
+            `status` bigint(20) NULL,
+            `date` timestamp NOT NULL,
+            PRIMARY KEY (`id`)
+        ) {$charsetCollate};";
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $createContactTable );
+}
+
+add_action('init', 'hk_CreatDatabaseContacts');
 

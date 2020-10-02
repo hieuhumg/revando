@@ -1,12 +1,12 @@
 <?php
-get_header();
 $url = get_template_directory_uri() . '/web/';
 $id = get_the_ID();
-$anh_chi_tiet = get_field('anh_chi_tiet', $id);
-$a = get_field('giam_gia', get_the_ID());
-print_r($a);die;
-?>
+$sp = get_field('info_product',$id);
+get_header();
+$test = $_SESSION["data"];
+unset($_SESSION["cart"]);
 
+?>
 <!--start-single-->
 <div class="single contact">
     <div class="container">
@@ -16,15 +16,16 @@ print_r($a);die;
                     <div class="col-md-5 single-top-left">
                         <div class="flexslider">
                             <ul class="slides">
-                                <li data-thumb="images/s-1.jpg">
-                                    <div class="thumb-image"> <img src="<?= $url ?>images/s-1.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li>
-                                <li data-thumb="images/s-2.jpg">
-                                    <div class="thumb-image"> <img src="<?= $url ?>images/s-2.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li>
-                                <li data-thumb="images/s-3.jpg">
-                                    <div class="thumb-image"> <img src="<?= $url ?>images/s-3.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li>
+                                <?php foreach ($sp as $item) {
+                                    foreach ($item['img-sub'] as $value) {
+                                        ?>
+                                        <li data-thumb="<?= $value['url']; ?>">
+                                            <div class="thumb-image"> <img src="<?= $value['url']; ?>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+                                        </li>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </ul>
                         </div>
                         <!-- FlexSlider -->
@@ -61,7 +62,7 @@ print_r($a);die;
                             </div>
 
                             <h5 class="item_price">$ 95.00</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                            <p><?= $sp[0]['des_product']; ?></p>
                             <div class="available">
                                 <ul>
                                     <li>Color
@@ -87,7 +88,7 @@ print_r($a);die;
                                 <li><span>SKU</span>
                                     <span class="women1">: CK09</span></li>
                             </ul>
-                            <a href="#" class="add-cart item_add">ADD TO CART</a>
+                            <a href="" onclick="return false" class="add-cart item_add add-cart-ajax">ADD TO CART</a>
 
                         </div>
                     </div>
@@ -95,33 +96,33 @@ print_r($a);die;
                 </div>
                 <div class="tabs">
                     <ul class="menu_drop">
-                        <li class="item1"><a href="#"><img src="images/arrow.png" alt="">Description</a>
+                        <li class="item1"><a href="#"><img src="<?= $url ?>images/arrow.png" alt="">Description</a>
                             <ul>
                                 <li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
                                 <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
                                 <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
                             </ul>
                         </li>
-                        <li class="item2"><a href="#"><img src="images/arrow.png" alt="">Additional information</a>
+                        <li class="item2"><a href="#"><img src="<?= $url ?>images/arrow.png" alt="">Additional information</a>
                             <ul>
                                 <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
                                 <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
                             </ul>
                         </li>
-                        <li class="item3"><a href="#"><img src="images/arrow.png" alt="">Reviews (10)</a>
+                        <li class="item3"><a href="#"><img src="<?= $url ?>images/arrow.png" alt="">Reviews (10)</a>
                             <ul>
                                 <li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
                                 <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
                                 <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
                             </ul>
                         </li>
-                        <li class="item4"><a href="#"><img src="images/arrow.png" alt="">Helpful Links</a>
+                        <li class="item4"><a href="#"><img src="<?= $url ?>images/arrow.png" alt="">Helpful Links</a>
                             <ul>
                                 <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
                                 <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
                             </ul>
                         </li>
-                        <li class="item5"><a href="#"><img src="images/arrow.png" alt="">Make A Gift</a>
+                        <li class="item5"><a href="#"><img src="<?= $url ?>images/arrow.png" alt="">Make A Gift</a>
                             <ul>
                                 <li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
                                 <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
@@ -260,51 +261,36 @@ print_r($a);die;
 </div>
 <!--end-single-->
 
-<!--information-starts-->
-<div class="information">
-    <div class="container">
-        <div class="infor-top">
-            <div class="col-md-3 infor-left">
-                <h3>Follow Us</h3>
-                <ul>
-                    <li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
-                    <li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
-                    <li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 infor-left">
-                <h3>Information</h3>
-                <ul>
-                    <li><a href="#"><p>Specials</p></a></li>
-                    <li><a href="#"><p>New Products</p></a></li>
-                    <li><a href="#"><p>Our Stores</p></a></li>
-                    <li><a href="contact.html"><p>Contact Us</p></a></li>
-                    <li><a href="#"><p>Top Sellers</p></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 infor-left">
-                <h3>My Account</h3>
-                <ul>
-                    <li><a href="account.html"><p>My Account</p></a></li>
-                    <li><a href="#"><p>My Credit slips</p></a></li>
-                    <li><a href="#"><p>My Merchandise returns</p></a></li>
-                    <li><a href="#"><p>My Personal info</p></a></li>
-                    <li><a href="#"><p>My Addresses</p></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 infor-left">
-                <h3>Store Information</h3>
-                <h4>The company name,
-                    <span>Lorem ipsum dolor,</span>
-                    Glasglow Dr 40 Fe 72.</h4>
-                <h5>+955 123 4567</h5>
-                <p><a href="mailto:example@email.com">contact@example.com</a></p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<!--information-end-->
 <?php
 get_footer();
 ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+    jQuery(function($) {
+        $('.add-cart-ajax').on('click',function() {
+            console.log(123);
+            event.preventDefault();
+            // Kiểm tra xe khuyến mại xem có đúng hay không
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "<?= get_template_directory_uri() ?>/ajax/save_cart.php",
+                //data: "id=" + 2 + "&type_sale=" + sale,
+                data: "id=" + <?= get_the_ID() ?>,
+                success: function (data) {
+                    console.log(data);
+                    if(data.error_code === 1){
+                        Swal.fire({
+                            icon: 'success',
+                            title: data.mess,
+                        })
+                    }
+
+                    // window.location = href;
+
+                }
+            });
+        });
+    });
+</script>
+

@@ -1,7 +1,6 @@
 <?php
 $url = get_template_directory_uri() . '/web/';
-
-$menu = (array)wp_get_nav_menu_items('Menu 1');
+$menu = wp_get_nav_menu_items('Menu 1');
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,10 +61,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="col-md-6 top-header-left">
                 <div class="cart box_1">
-                    <a href="checkout.html">
+                    <a href="<?= get_permalink(90); ?>">
                         <div class="total">
                             <span class="simpleCart_total"></span></div>
-                        <img src="images/cart-1.png" alt=""/>
+                        <img src="<?= $url ?>images/cart-1.png" alt=""/>
                     </a>
                     <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                     <div class="clearfix"></div>
@@ -78,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="index.html"><h1>Luxury Watches</h1></a>
+    <a href="<?php home_url(); ?>"><h1>Luxury Watches</h1></a>
 </div>
 <!--start-logo-->
 <!--bottom-header-->
@@ -88,59 +87,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-9 header-left">
                 <div class="top-nav">
                     <ul class="memenu skyblue">
-                        <?php foreach ($menu as $value): ?>
-                            <?php if (($value->menu_item_parent) == 0) { ?>
-                                <li class="grid"><a href="<?= $value->url ?>"><?= $value->title; ?></a>
+                        <?php
+                        foreach ($menu as $value) {
+                            if ($value->menu_item_parent == 0) {
+                                ?>
+                                <li class="grid"><a href="#"><?= $value->title ?></a>
                                     <?php
-                                    $child = '<div class="mepanel">
-                                                <div class="row">';
+                                    $div = '<div class="mepanel">'
+                                        . '<div class="row">';
+                                    $div_sub = '<li><a href="products.html">New Arrivals</a></li>';
                                     $dem = 0;
+                                    $dem_2 = 0;
                                     foreach ($menu as $item) {
                                         if ($item->menu_item_parent == $value->ID) {
-                                            $dem_2 = 0;
-                                            $child_2 = '';
-                                            foreach ($menu as $va) {
-                                                if ($va->menu_item_parent == $item->ID) {
-                                                    $child_2 .= '<li><a href="' . $va->url . '">' . $va->title . '</a></li>';
-                                                    $dem_2++;
-                                                }
-                                            }
-                                            if ($dem_2 == 0) {
-                                                $child_2 = '';
-                                            }
                                             $dem++;
-                                            $child .= '<div class="col1 me-one">
-                                                        <a href="'. $item->url.'"><h4>'. $item->title .'</h4></a>
-                                                        
-                                                        <ul>
-                                                           '.$child_2.'
-                                                        </ul>
-                                                    </div>';
-
                                         }
-
+                                        
                                     }
-                                    $child .= '</div></div>';
                                     if ($dem != 0) {
-                                        echo $child;
-                                    }
+                                        $div .= '
+                                                        <div class="col1 me-one">
+                                                            <h4>Shop</h4>
+                                                            <ul>
+                                                                
+                                                                <li><a href="products.html">Blazers</a></li>
+                                                                <li><a href="products.html">Swem Wear</a></li>
+                                                                <li><a href="products.html">Accessories</a></li>
+                                                                <li><a href="products.html">Handbags</a></li>
+                                                                <li><a href="products.html">T-Shirts</a></li>
+                                                                <li><a href="products.html">Watches</a></li>
+                                                                <li><a href="products.html">My Shopping Bag</a></li>
+                                                            </ul>
+                                                        </div>';
+                                        $div.= '</div>
+                                    </div>';
+                                        echo $div;
+                                        }
                                     ?>
 
                                 </li>
-                            <?php } ?>
-                        <?php endforeach; ?>
+                                <?php
+                            }
+                        }
+                        ?>
+
                     </ul>
                 </div>
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-3 header-right">
-                <form action="<?php echo esc_url(home_url('/')); ?>">
-                    <div class="search-bar">
-                        <input type="text" placeholder="tim kiem" name="s">
-                        <input type="submit" value="">
-                    </div>
-                </form>
-
+                <div class="search-bar">
+                    <input type="text" value="Search" onfocus="this.value = '';"
+                           onblur="if (this.value == '') {this.value = 'Search';}">
+                    <input type="submit" value="">
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
